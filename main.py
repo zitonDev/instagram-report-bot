@@ -1,5 +1,4 @@
 # Stream Point Bot v0.1
-# Made by Erv
 import time
 import os
 from selenium import webdriver, common
