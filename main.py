@@ -1,46 +1,86 @@
-# Stream Point Bot v0.1
 import time
 import os
 from selenium import webdriver, common
-import Selenium2Library
-from colorama import Fore, Back, Style
 import ctypes
+from _thread import *
 
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    RESET = "\033[;0m"
+    RED = "\033[;31m"
+
+#Title
 ctypes.windll.kernel32.SetConsoleTitleW("IRB - V1 - By Erv")
 
-status = Fore.RED + "De-Activated" + Style.RESET_ALL
-account = Fore.RED + "N/A" + Style.RESET_ALL
-rpc = 0
+#Variables
+account = ""
+fn = ""
+rpc = 1
+delay = 0
 
-def header():
-    os.system('cls')
-    print(Style.RESET_ALL + " ▄█     ▄████████ ▀█████████▄  ")
-    print("███    ███    ███   ███    ███ ")
-    print("███▌   ███    ███   ███    ███ ")
-    print("███▌  ▄███▄▄▄▄██▀  ▄███▄▄▄██▀  ")
-    print("███▌ ▀▀███▀▀▀▀▀   ▀▀███▀▀▀██▄  ")
-    print("███  ▀███████████   ███    ██▄ ")
-    print("███    ███    ███   ███    ███ ")
-    print("█▀     ███    ███ ▄█████████▀  ")
-    print("       ███    ███              ")
-    print(Style.RESET_ALL + "────────────────────────────────────────")
-    print("IG Report Bot: " + status)
-    print("Account: " + account + "  Report Count: " + str(rpc))
-    print(Style.RESET_ALL + "────────────────────────────────────────")
 
-header()
-print(Fore.GREEN + "Starting Instagram report bot...")
-time.sleep(3)
+def c1header(work):
+    if work == True:
+        global account
+        global fn
+        global delay
+        global rpc
+        os.system("cls")
 
-def bot():
-    print("Reporting " + Fore.GREEN + "@" + Fore.GREEN + account + Style.RESET_ALL + " with a delay of " + Fore.RED + str(delay) + Style.RESET_ALL + " seconds.")
+        print(
+            f"            {bcolors.OKBLUE}██{bcolors.RED}╗{bcolors.OKBLUE}██████{bcolors.RED}╗ {bcolors.OKBLUE}██████{bcolors.RED}╗ ")
+        print(
+            f"            {bcolors.OKBLUE}██{bcolors.RED}║{bcolors.OKBLUE}██{bcolors.RED}╔══{bcolors.OKBLUE}██{bcolors.RED}╗{bcolors.OKBLUE}██{bcolors.RED}╔══{bcolors.OKBLUE}██{bcolors.RED}╗")
+        print(
+            f"            {bcolors.OKBLUE}██{bcolors.RED}║{bcolors.OKBLUE}██████{bcolors.RED}╔╝{bcolors.OKBLUE}██████{bcolors.RED}╔╝")
+        print(
+            f"            {bcolors.OKBLUE}██{bcolors.RED}║{bcolors.OKBLUE}██{bcolors.RED}╔══{bcolors.OKBLUE}██{bcolors.RED}╗{bcolors.OKBLUE}██{bcolors.RED}╔══{bcolors.OKBLUE}██{bcolors.RED}╗")
+        print(
+            f"            {bcolors.OKBLUE}██{bcolors.RED}║{bcolors.OKBLUE}██{bcolors.RED}║  {bcolors.OKBLUE}██{bcolors.RED}║{bcolors.OKBLUE}██████{bcolors.RED}╔╝")
+        print(f"            {bcolors.RED}╚═╝╚═╝  ╚═╝╚═════╝ {bcolors.RESET}")
+        account = input(f"Account: _> ")
+        fn = input(f"Full Name: _> ")
+        delay = input(f"Delay (Seconds): _> ")
+
+def bot(showheader):
+
+
+    global account
+    global fn
+    global testing
     time.sleep(3)
     global rpc
-    rpc = 0
-    global status
-    status = Fore.GREEN + "Activated" + Style.RESET_ALL
+
+
+
     while True:
-        header()
+        if showheader == True:
+
+            ctypes.windll.kernel32.SetConsoleTitleW(f"IRB - Reports [{rpc}]")
+            os.system("cls")
+            print(
+                f"            {bcolors.OKBLUE}██{bcolors.RED}╗{bcolors.OKBLUE}██████{bcolors.RED}╗ {bcolors.OKBLUE}██████{bcolors.RED}╗ ")
+            print(
+                f"            {bcolors.OKBLUE}██{bcolors.RED}║{bcolors.OKBLUE}██{bcolors.RED}╔══{bcolors.OKBLUE}██{bcolors.RED}╗{bcolors.OKBLUE}██{bcolors.RED}╔══{bcolors.OKBLUE}██{bcolors.RED}╗")
+            print(
+                f"            {bcolors.OKBLUE}██{bcolors.RED}║{bcolors.OKBLUE}██████{bcolors.RED}╔╝{bcolors.OKBLUE}██████{bcolors.RED}╔╝")
+            print(
+                f"            {bcolors.OKBLUE}██{bcolors.RED}║{bcolors.OKBLUE}██{bcolors.RED}╔══{bcolors.OKBLUE}██{bcolors.RED}╗{bcolors.OKBLUE}██{bcolors.RED}╔══{bcolors.OKBLUE}██{bcolors.RED}╗")
+            print(
+                f"            {bcolors.OKBLUE}██{bcolors.RED}║{bcolors.OKBLUE}██{bcolors.RED}║  {bcolors.OKBLUE}██{bcolors.RED}║{bcolors.OKBLUE}██████{bcolors.RED}╔╝")
+            print(f"            {bcolors.RED}╚═╝╚═╝  ╚═╝╚═════╝ {bcolors.RESET}")
+            print(f"           Instagram Account: {account}")
+            print(f"           Reports: {rpc}")
+
         options = webdriver.ChromeOptions()
         options.add_experimental_option('excludeSwitches', ['enable-logging'])  # Disables logging
         options.add_argument('--disable-extensions')
@@ -61,21 +101,16 @@ def bot():
         driver.find_element_by_xpath('//a[@title="11"]//span[@class="_54nh"]').click()
         driver.find_element_by_xpath('//select[@id="294540267362199"]//option[@value="Other"]').click()
         driver.find_element_by_xpath('//button[@class="_42ft _4jy0 _4jy4 _4jy1 selected _51sy"]').click()
-        time.sleep(4)
+        time.sleep(3)
         driver.close()
         rpc += 1
-        time.sleep(delay)
+        time.sleep(int(delay))
 
 def start():
-    header()
-    global account
-    account = input("IG Username: ")
-    global fn
-    fn = input("Full Name of User: ")
-    global delay
-    delay = int(input("Delay between Reports (Seconds): "))
-    bot()
-
+    global testing
+    c1header(True)
+    # (False) later for multithreading
+    start_new_thread(bot(True))
 
 if __name__ == '__main__':
     start()
